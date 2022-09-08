@@ -16,8 +16,8 @@ class About extends Component {
                         <iframe width="100%" height="400px"
                             src="https://www.youtube.com/embed/TaJqxfMZMWs"
                             title="Shay Nắnggg - AMEE x OBITO x HỨA KIM TUYỀN x SKIN AQUA TONE UP UV | Official Music Video"
-                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
+                            frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen>
                         </iframe>
                     </div>
                     <div className="content-right">

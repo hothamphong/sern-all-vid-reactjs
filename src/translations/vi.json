@@ -50,5 +50,9 @@
         "image": "Ảnh đại diện",
         "save": "Lưu user",
         "edit": "Lưu thay đổi"
+    },
+    "homepage": {
+        "outstanding-doctor": "Last week's featured doctor",
+        "more-infor": "More infor"
     }
 }

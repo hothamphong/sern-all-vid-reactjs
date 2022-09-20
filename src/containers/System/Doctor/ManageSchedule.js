@@ -9,6 +9,7 @@ import DatePicker from '../../../components/Input/DatePicker';
 import moment from 'moment';
 import { toast } from "react-toastify";
 import _ from 'lodash';
+import { saveBulkScheduleDoctor } from '../../../services/userService';
 
 class ManageSchedule extends Component {
     constructor(props) {
@@ -89,7 +90,7 @@ class ManageSchedule extends Component {
         }
     }
 
-    handleSaveSchedule = () => {
+    handleSaveSchedule = async () => {
         let { rangeTime, selectedDoctor, currentDate } = this.state;
         let result = [];
         if (!currentDate) {
@@ -100,7 +101,9 @@ class ManageSchedule extends Component {
             toast.error("Invalid selected doctor!");
             return;
         }
-        let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+        // let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+        // let formatedDate = moment(currentDate).unix();
+        let formatedDate = new Date(currentDate).getTime();
         if (rangeTime && rangeTime.length > 0) {
             let selectTime = rangeTime.filter(item => item.isSelected === true);
             if (selectTime && selectTime.length > 0) {
@@ -109,7 +112,7 @@ class ManageSchedule extends Component {
                     let object = {};
                     object.doctorId = selectedDoctor.value;//value: label
                     object.date = formatedDate;
-                    object.time = schedule.keyMap;
+                    object.timeType = schedule.keyMap;
                     result.push(object)
                 })
                 let object = {};
@@ -118,6 +121,12 @@ class ManageSchedule extends Component {
                 return;
             }
         }
+        let res = await saveBulkScheduleDoctor({
+            arrSchedule: result,
+            doctorId: selectedDoctor.value,
+            formatedDate: formatedDate
+        })
+        console.log('saveBulkScheduleDoctor---------', res)
         console.log('check result---------', result)
     }
 

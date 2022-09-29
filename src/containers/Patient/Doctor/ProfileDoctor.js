@@ -56,7 +56,9 @@ class ProfileDoctor extends Component {
             return (
                 <>
                     <div>{time} - {date}</div>
-                    <div>free booking</div>
+                    <div>
+                        <FormattedMessage id="patient.booking-modal.price-booking" />
+                    </div>
                 </>
             )
         }
@@ -97,7 +99,7 @@ class ProfileDoctor extends Component {
                     </div>
                 </div>
                 <div className="price">
-                    Giá khám:
+                    <FormattedMessage id="patient.booking-modal.price" />
                     {
                         dataProfile && dataProfile.Doctor_Infor && language === LANGUAGES.VI &&
                         <NumberFormat
